@@ -1,0 +1,2 @@
+# app-solution
+Blazor Application
