@@ -1995,11 +1995,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\_samples\\net\\net8-rc2\\AppSolution\\AppServer.Client\\AppServer.Client.csproj",
+      "projectUniqueName": "C:\\_samples\\antoniomourao\\app-solution\\AppServer.Client\\AppServer.Client.csproj",
       "projectName": "AppServer.Client",
-      "projectPath": "C:\\_samples\\net\\net8-rc2\\AppSolution\\AppServer.Client\\AppServer.Client.csproj",
+      "projectPath": "C:\\_samples\\antoniomourao\\app-solution\\AppServer.Client\\AppServer.Client.csproj",
       "packagesPath": "C:\\Users\\amourao\\.nuget\\packages\\",
-      "outputPath": "C:\\_samples\\net\\net8-rc2\\AppSolution\\AppServer.Client\\obj\\",
+      "outputPath": "C:\\_samples\\antoniomourao\\app-solution\\AppServer.Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\amourao\\AppData\\Roaming\\NuGet\\NuGet.Config",

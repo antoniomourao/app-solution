@@ -9,187 +9,187 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AppServer
 build_property.RootNamespace = AppServer
-build_property.ProjectDir = C:\_samples\net\net8-rc2\AppSolution\AppServer\
+build_property.ProjectDir = C:\_samples\antoniomourao\app-solution\AppServer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\_samples\net\net8-rc2\AppSolution\AppServer
+build_property.MSBuildProjectDirectory = C:\_samples\antoniomourao\app-solution\AppServer
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/App.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Identity/ExternalLoginPicker.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Identity/ExternalLoginPicker.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xJZGVudGl0eVxFeHRlcm5hbExvZ2luUGlja2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Identity/LogoutForm.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Identity/LogoutForm.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xJZGVudGl0eVxMb2dvdXRGb3JtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Identity/ShowRecoveryCodes.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Identity/ShowRecoveryCodes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xJZGVudGl0eVxTaG93UmVjb3ZlcnlDb2Rlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Identity/StatusMessage.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Identity/StatusMessage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xJZGVudGl0eVxTdGF0dXNNZXNzYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Layout/ManageLayout.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Layout/ManageLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFuYWdlTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Layout/ManageNavMenu.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Layout/ManageNavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFuYWdlTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ConfirmEmail.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ConfirmEmail.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XENvbmZpcm1FbWFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ConfirmEmailChange.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ConfirmEmailChange.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XENvbmZpcm1FbWFpbENoYW5nZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ExternalLogin.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ExternalLogin.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XEV4dGVybmFsTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ForgotPassword.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ForgotPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XEZvcmdvdFBhc3N3b3JkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ForgotPasswordConfirmation.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ForgotPasswordConfirmation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XEZvcmdvdFBhc3N3b3JkQ29uZmlybWF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/InvalidPasswordReset.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/InvalidPasswordReset.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XEludmFsaWRQYXNzd29yZFJlc2V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/InvalidUser.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/InvalidUser.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XEludmFsaWRVc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Lockout.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Lockout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvY2tvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Login.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvZ2luLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/LoginWith2fa.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/LoginWith2fa.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvZ2luV2l0aDJmYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/LoginWithRecoveryCode.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/LoginWithRecoveryCode.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XExvZ2luV2l0aFJlY292ZXJ5Q29kZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/ChangePassword.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/ChangePassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxDaGFuZ2VQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/DeletePersonalData.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/DeletePersonalData.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxEZWxldGVQZXJzb25hbERhdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/Disable2fa.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/Disable2fa.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxEaXNhYmxlMmZhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/Email.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/Email.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxFbWFpbC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/EnableAuthenticator.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/EnableAuthenticator.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxFbmFibGVBdXRoZW50aWNhdG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/ExternalLogins.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/ExternalLogins.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxFeHRlcm5hbExvZ2lucy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/GenerateRecoveryCodes.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/GenerateRecoveryCodes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxHZW5lcmF0ZVJlY292ZXJ5Q29kZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/Index.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/PersonalData.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/PersonalData.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxQZXJzb25hbERhdGEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/ResetAuthenticator.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/ResetAuthenticator.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxSZXNldEF1dGhlbnRpY2F0b3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/SetPassword.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/SetPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxTZXRQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/TwoFactorAuthentication.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/TwoFactorAuthentication.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxUd29GYWN0b3JBdXRoZW50aWNhdGlvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Manage/_Imports.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Manage/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XE1hbmFnZVxfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/Register.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlZ2lzdGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/RegisterConfirmation.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/RegisterConfirmation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlZ2lzdGVyQ29uZmlybWF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ResendEmailConfirmation.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ResendEmailConfirmation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlc2VuZEVtYWlsQ29uZmlybWF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ResetPassword.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ResetPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlc2V0UGFzc3dvcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/ResetPasswordConfirmation.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/ResetPasswordConfirmation.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XFJlc2V0UGFzc3dvcmRDb25maXJtYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Account/_Imports.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Account/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50XF9JbXBvcnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Error.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Home.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Pages/Weather.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xXZWF0aGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Routes.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/_Imports.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Layout/MainLayout.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-kvfktt5l1n
 
-[C:/_samples/net/net8-rc2/AppSolution/AppServer/Components/Layout/NavMenu.razor]
+[C:/_samples/antoniomourao/app-solution/AppServer/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-fz8lkyqozs
