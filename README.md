@@ -2,10 +2,10 @@
 
 ## Blazor Project in .Net 8 (RC.2)
 Settings used:
-* int, set to Auto - Uses Server while downloading WebAssembly assets, then uses WebAssembly
-* au, set to Individual - Individual authentication
-* ai, set to true - Enables all interactive option
-* use-program-main, set to true - Uses Program.Main as the entry point of the application
+* **int**, set to Auto - Uses Server while downloading WebAssembly assets, then uses WebAssembly
+* **au**, set to Individual - Individual authentication
+* **ai**, set to true - Enables all interactive option
+* **use-program-main**, set to true - Uses Program.Main as the entry point of the application
 ```dos
 dotnet new blazor -int Auto -au Individual -ai --use-program-main --name AppServer
 ```
@@ -49,15 +49,15 @@ Add a reference to another project
 dotnet <target project> add reference <project to reference>
 ```
 
-## Libraries
-### Bootstrap
-Icons can be found [here](https://icons.getbootstrap.com/#install)
+## Internal Libraries
+
+* [Email Sender Service](Library/Services/EmailSenderService/README.md)
 
 
-## Application Server
-Backend Blasor Server application with Individual authentication with all interactive option enabled. Use of server components while downloading WebAssembly assets and then uses WebAssembly.[^1]
+## External Libraries[^1]
+* [nLog](https://nlog-project.org/)
+* [Bootstrap Icons](https://icons.getbootstrap.com/#install)
 
-### Installation
 
 
-[^1]: This is the first footnote.
+[^1]: Libraries installed and in use by App Server
