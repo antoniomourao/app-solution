@@ -12,6 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NLog.Web.AspNetCore" Version="$(NLog)" />
+    <PackageReference Include="NLog" Version="$(NLog)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="$(NetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(NetCoreVersion)" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(NetCoreVersion)" />
