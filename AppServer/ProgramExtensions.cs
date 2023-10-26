@@ -59,19 +59,18 @@ public static class ProgramExtensions
         IConfiguration configuration
     )
     {
-        services.AddSingleton<IEmailSender, NoOpEmailSender>();
-                 services
-                    .AddOptions<EmailSenderServiceSmtpSettings>()
-                    .Bind(configuration.GetSection("SmtpSettings"))
-                    .ValidateDataAnnotations();
-        
-                var instance = services
-                    .BuildServiceProvider()
-                    .GetRequiredService<IOptionsMonitor<EmailSenderServiceSmtpSettings>>()
-                    .CurrentValue;
-                services.AddSingleton(_ => instance);
-        
-                services.AddScoped<EmailService>();
-                services.AddScoped<IEmailSender, EmailSenderUtil>(); 
+        services
+            .AddOptions<EmailSenderServiceSmtpSettings>()
+            .Bind(configuration.GetSection("SmtpSettings"))
+            .ValidateDataAnnotations();
+
+        var instance = services
+            .BuildServiceProvider()
+            .GetRequiredService<IOptionsMonitor<EmailSenderServiceSmtpSettings>>()
+            .CurrentValue;
+        services.AddSingleton(_ => instance);
+
+        services.AddScoped<EmailService>();
+        services.AddScoped<IEmailSender, EmailSenderUtil>();
     }
 }
