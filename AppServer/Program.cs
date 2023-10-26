@@ -10,69 +10,80 @@ using NLog;
 using NLog.Web;
 using System.Reflection;
 
-// Early init of NLog to allow startup and exception logging, before host is built
-var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
-logger.Debug("[App Server] init program...");
-
-try
+public class Program
 {
-    var builder = WebApplication.CreateBuilder(args);
-
-    // Set base directory for nLog
-    var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
-    Directory.SetCurrentDirectory(basePath);
-    builder.Configuration.SetBasePath(basePath).AddJsonFile("appsettings.json", false, true);
-
-    // Add services to the container.
-    builder.Services
-        .AddRazorComponents()
-        .AddInteractiveServerComponents()
-        .AddInteractiveWebAssemblyComponents();
-
-    // Add additional endpoints required by the Identity /Account Razor components.
-    builder.Services.AddIdentityServices(builder.Configuration);
-
-    // Add Email Sender Service
-    builder.Services.AddEmailServices(builder.Configuration);
-
-    var app = builder.Build();
-
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    public static void Main(string[] args)
     {
-        app.UseWebAssemblyDebugging();
+        // Early init of NLog to allow startup and exception logging, before host is built
+        var logger = NLog.LogManager
+            .Setup()
+            .LoadConfigurationFromAppSettings()
+            .GetCurrentClassLogger();
+        logger.Debug("[App Server] init program...");
+
+        try
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            // Set base directory for nLog
+            var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+            Directory.SetCurrentDirectory(basePath);
+            builder.Configuration
+                .SetBasePath(basePath)
+                .AddJsonFile("appsettings.json", false, true);
+
+            // Add services to the container.
+            builder.Services
+                .AddRazorComponents()
+                .AddInteractiveServerComponents()
+                .AddInteractiveWebAssemblyComponents();
+
+            // Add additional endpoints required by the Identity /Account Razor components.
+            builder.Services.AddIdentityServices(builder.Configuration);
+
+            // Add Email Sender Service
+            builder.Services.AddEmailServices(builder.Configuration);
+
+            var app = builder.Build();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseWebAssemblyDebugging();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error", createScopeForErrors: true);
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+            app.UseAntiforgery();
+
+            app.MapRazorComponents<App>()
+                .AddInteractiveServerRenderMode()
+                .AddInteractiveWebAssemblyRenderMode()
+                .AddAdditionalAssemblies(typeof(Counter).Assembly);
+
+            // Add additional endpoints required by the Identity /Account Razor components.
+            app.MapAdditionalIdentityEndpoints();
+
+            app.Run();
+        }
+        catch (Exception exception)
+        {
+            // NLog: catch setup errors
+            logger.Error(exception, "Stopped program because of exception");
+            throw;
+        }
+        finally
+        {
+            // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+            logger.Debug("[App Server] end program!");
+            NLog.LogManager.Shutdown();
+        }
     }
-    else
-    {
-        app.UseExceptionHandler("/Error", createScopeForErrors: true);
-        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-        app.UseHsts();
-    }
-
-    app.UseHttpsRedirection();
-
-    app.UseStaticFiles();
-    app.UseAntiforgery();
-
-    app.MapRazorComponents<App>()
-        .AddInteractiveServerRenderMode()
-        .AddInteractiveWebAssemblyRenderMode()
-        .AddAdditionalAssemblies(typeof(Counter).Assembly);
-
-    // Add additional endpoints required by the Identity /Account Razor components.
-    app.MapAdditionalIdentityEndpoints();
-
-    app.Run();
-}
-catch (Exception exception)
-{
-    // NLog: catch setup errors
-    logger.Error(exception, "Stopped program because of exception");
-    throw;
-}
-finally
-{
-    // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
-    logger.Debug("[App Server] end program!");
-    NLog.LogManager.Shutdown();
 }
