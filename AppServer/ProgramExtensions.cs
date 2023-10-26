@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using AppServer.Data;
 using AppServer.Identity;
 using EmailSenderService;
+using AppServer.Services;
 
 public static class ProgramExtensions
 {

@@ -1,6 +1,7 @@
 using EmailSenderService;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
+namespace AppServer.Services;
 public class EmailSenderUtil : IEmailSender
 {
     private readonly EmailService _emailService;
@@ -17,7 +18,8 @@ public class EmailSenderUtil : IEmailSender
         await _emailService.SendEmailAsync(
             email,
             subject,
-            htmlMessage
+            htmlMessage,
+            true
         );
     }
 }

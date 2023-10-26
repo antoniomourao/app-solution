@@ -24,10 +24,10 @@ public class EmailService
     /// <param name="subject"></param>
     /// <param name="message"></param>
     /// <returns></returns>
-    public Task SendEmailAsync(string email, string subject, string message)
+    public Task SendEmailAsync(string email, string subject, string message, bool IsBodyHtml = false)
     {
         IEnumerable<MailAddress> to = new List<MailAddress>() { new MailAddress(email) };
-        IEmailMessage emailMessage = new EmailMessage(subject, message, to);
+        IEmailMessage emailMessage = new EmailMessage(subject, message, to, IsBodyHtml);
 
         var mailMessage = CreateEmailMessage(emailMessage);
         return Send(mailMessage);
@@ -61,8 +61,10 @@ public class EmailService
         return mailMessage;
     }
 
-    private Task Send(MailMessage mailMessage)
+    private async Task Send(MailMessage mailMessage)
     {
+        _logger.LogInformation("SendEmail Async {MailMessage}...", mailMessage);
+
         using (var smtpClient = new SmtpClient(_emailConfig.SmtpServer, _emailConfig.Port))
         {
             smtpClient.UseDefaultCredentials = false;
@@ -73,7 +75,8 @@ public class EmailService
             smtpClient.EnableSsl = _emailConfig.EnableSsl;
 
             _logger.LogInformation("SendEmail Async...");
-            return smtpClient.SendMailAsync(mailMessage);
+            await smtpClient.SendMailAsync(mailMessage);
+            _logger.LogInformation("SendEmail Async...Done");
         }
     }
 }
