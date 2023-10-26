@@ -59,5 +59,4 @@ dotnet <target project> add reference <project to reference>
 * [Bootstrap Icons](https://icons.getbootstrap.com/#install)
 
 
-
 [^1]: Libraries installed and in use by App Server
