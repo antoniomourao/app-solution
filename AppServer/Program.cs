@@ -41,8 +41,10 @@ public class Program
             // Add additional endpoints required by the Identity /Account Razor components.
             builder.Services.AddIdentityServices(builder.Configuration);
 
-            // Add Email Sender Service
-            builder.Services.AddEmailServices(builder.Configuration);
+            // Add Required App Server Service
+            builder.Services.AddAppServerServices(builder.Configuration);
+
+            builder.Services.AddSingleton<IDomainModule, AppServer.Client.DomainModule>();
 
             var app = builder.Build();
 
@@ -66,7 +68,7 @@ public class Program
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode()
                 .AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(Counter).Assembly);
+                .AddAdditionalAssemblies(ProgramExtensions.GetAssembliesToLoad());
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();

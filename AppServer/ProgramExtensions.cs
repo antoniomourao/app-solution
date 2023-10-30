@@ -1,13 +1,9 @@
-using AppServer;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using AppServer.Data;
-using AppServer.Identity;
-using EmailSenderService;
-using AppServer.Services;
+using System.Reflection;
 
 public static class ProgramExtensions
 {
@@ -54,11 +50,12 @@ public static class ProgramExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <param name="configuration"></param>
-    public static void AddEmailServices(
+    public static void AddAppServerServices(
         this IServiceCollection services,
         IConfiguration configuration
     )
     {
+        // Setup EmailSenderService for authentication
         services
             .AddOptions<EmailSenderServiceSmtpSettings>()
             .Bind(configuration.GetSection("SmtpSettings"))
@@ -72,5 +69,34 @@ public static class ProgramExtensions
 
         services.AddScoped<EmailService>();
         services.AddScoped<IEmailSender, EmailSenderUtil>();
+
+        // Setup Domain Services
+        services.AddScoped<IDomainModuleServices, DomainModuleServices>();
+    }
+
+    /// <summary>
+    /// Load required Domain assemblies
+    /// </summary>
+    /// <returns></returns>
+    public static Assembly[] GetAssembliesToLoad()
+    {
+        // Load all assemblies in the current directory
+        var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+        var files = Directory.GetFiles(basePath, "Domain*.dll");
+        List<Assembly> assemblies = new List<Assembly>();
+        assemblies.Add(Assembly.LoadFrom("AppServer.Client.dll"));
+        foreach (var file in files)
+        {
+            try
+            {
+                assemblies.Add(Assembly.LoadFrom(file));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading assembly {file}: {ex.Message}");
+            }
+        }
+
+        return assemblies.ToArray();
     }
 }

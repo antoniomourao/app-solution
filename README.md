@@ -49,6 +49,22 @@ Add a reference to another project
 dotnet <target project> add reference <project to reference>
 ```
 
+## User Secrets
+Add a user secret to the project
+```dos
+dotnet user-secrets set "ConnectionStrings:IdentityConnection" "DataSource=Data/Databases/appIdentity.sqlite;Cache=Shared"
+```
+
+To retrieve the user secret
+```csharp
+builder.Configuration.GetConnectionString("ConnectionStrings:IdentityConnection"))
+```
+
+To list stored user secrets
+```dos
+dotnet user-secrets list
+```
+
 ## Internal Libraries
 
 * [Email Sender Service](Library/Services/EmailSenderService/README.md)

@@ -21,6 +21,8 @@
                             <span class="bi bi-arrow-bar-left" aria-hidden="true"></span> Logout
                         </NavLink>
                     </div>
+
+                    <DomainNavMenu AuthorizedOnly="true" />
                 </Authorized>
                 <NotAuthorized>
                     <div class="nav-item px-3">
@@ -33,6 +35,7 @@
                             <span class="bi bi-person-badge" aria-hidden="true"></span> Login
                         </NavLink>
                     </div>
+                    <DomainNavMenu AuthorizedOnly="false" />
                 </NotAuthorized>
             </AuthorizeView>
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
@@ -49,3 +52,8 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+
+}
+```

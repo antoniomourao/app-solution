@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AppServer.Client\AppServer.Client.csproj" />
     <ProjectReference Include="..\Library\Services\EmailSenderService\EmailSenderService.csproj" />
+    <ProjectReference Include="..\Library\AppShared\AppShared.csproj" />
   </ItemGroup>
 
 </Project>
