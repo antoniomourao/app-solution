@@ -78,7 +78,7 @@ public class Program
             app.MapAdditionalIdentityEndpoints();
 
             // app.MapControllers();
-            app.MapDefaultControllerRoute();
+            // app.MapDefaultControllerRoute();
 
 
             app.Run();
