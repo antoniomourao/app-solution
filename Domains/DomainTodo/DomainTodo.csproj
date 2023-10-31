@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>$(TargetFrameworkVersion)</TargetFramework>
+    <Nullable>$(Nullable)</Nullable>
+    <ImplicitUsings>$(ImplicitUsings)</ImplicitUsings>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(NetCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\Components\AppSharedComponents\AppSharedComponents.csproj" />
+    <ProjectReference Include="..\..\Library\AppShared\AppShared.csproj" />
+  </ItemGroup>
+
+</Project>

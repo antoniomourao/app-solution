@@ -1,0 +1,51 @@
+﻿@page "/todo/home"
+@rendermode RenderMode.InteractiveServer
+
+
+<h3>Todo (@todos.Count(todo => !todo.IsDone))</h3>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.IsDone" />
+            <input @bind="todo.Title" />
+        </li>
+    }
+</ul>
+
+<input placeholder="Something todo" @bind="newTodo" />
+<button @onclick="AddTodo">Add todo</button>
+
+<ConfirmDialog Show="@showDialog" OnConfirm="@OnConfirm">
+    Todo Added Successfully
+</ConfirmDialog>
+
+
+@code {
+    private List<Model.TodoItem> todos = new();
+    private string? newTodo;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new Model.TodoItem { Title = newTodo });
+            showDialog = true;
+
+            Task.Delay(2000).ContinueWith(_ =>
+            {
+                InvokeAsync(() => OnConfirm());
+            });
+        }
+    }
+
+    private bool showDialog { get; set; } = false;
+    private void OnConfirm()
+    {
+        newTodo = string.Empty;
+        showDialog = false;
+        StateHasChanged();
+
+    }
+}

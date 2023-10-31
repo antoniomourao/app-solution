@@ -28,6 +28,8 @@
     <ProjectReference Include="..\AppServer.Client\AppServer.Client.csproj" />
     <ProjectReference Include="..\Library\Services\EmailSenderService\EmailSenderService.csproj" />
     <ProjectReference Include="..\Library\AppShared\AppShared.csproj" />
+    <ProjectReference Include="..\Domains\DomainTodo\DomainTodo.csproj" />
+    <ProjectReference Include="..\Library\Components\AppSharedComponents\AppSharedComponents.csproj" />
   </ItemGroup>
 
 </Project>

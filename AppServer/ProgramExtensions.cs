@@ -89,6 +89,7 @@ public static class ProgramExtensions
         {
             try
             {
+                Console.WriteLine($"Loading assembly {file}...");
                 assemblies.Add(Assembly.LoadFrom(file));
             }
             catch (Exception ex)

@@ -3,29 +3,19 @@
 @foreach (var (module, menuItems) in NavMenuItems)
 {
     <div class="nav-item px-3">
-        <NavLink class="nav-link" href="" data-enhance-nav="false">
-            <span class="" aria-hidden="true"></span> @module
-        </NavLink>
         @if (menuItems != null && menuItems.Count > 0)
         {
             <div class="nav-item px-3">
                 @foreach (var item in menuItems)
                 {
                     <NavLink class="nav-link" href="@item.Href" data-enhance-nav="false">
-                        <span class="" aria-hidden="true"></span> @item.Title
+                        <span class="@item.Icon" aria-hidden="true"></span> @item.Title
                     </NavLink>
                 }
             </div>
         }
     </div>
 }
-
-<div class="nav-item px-3">
-    <a href="" data-enhance-nav="false">link</a>
-    <NavLink class="nav-link" href="" data-enhance-nav="false">
-        <span class="" aria-hidden="true"></span> This is sub menu @AuthorizedOnly
-    </NavLink>
-</div>
 
 @code {
     [Parameter]

@@ -24,6 +24,7 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddEndpointsApiExplorer();
 
             // Set base directory for nLog
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
@@ -44,8 +45,11 @@ public class Program
             // Add Required App Server Service
             builder.Services.AddAppServerServices(builder.Configuration);
 
-            builder.Services.AddSingleton<IDomainModule, AppServer.Client.DomainModule>();
-
+            /// ++++++++++++++++++++++
+            /// Domain Services
+            /// ++++++++++++++++++++++
+            builder.Services.AddDomainServices();
+                    
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -72,6 +76,10 @@ public class Program
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();
+
+            // app.MapControllers();
+            app.MapDefaultControllerRoute();
+
 
             app.Run();
         }
