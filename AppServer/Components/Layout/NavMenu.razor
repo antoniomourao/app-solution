@@ -17,12 +17,6 @@
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
             <NavLink class="nav-link" href="weather">
                 <span class="bi bi-list-nested" aria-hidden="true"></span> Weather
             </NavLink>
@@ -34,35 +28,11 @@
             </NavLink>
         </div>
 
-        <AuthorizeView>
-            <Authorized>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="/Account/Manage">
-                        <span class="bi bi-person-fill" aria-hidden="true"></span> @context.User.Identity?.Name
-                    </NavLink>
-                </div>
-                <div class="nav-item px-3">
-                    <LogoutForm id="logout-form" />
-                    <NavLink class="nav-link" href="#"
-                        onclick="document.getElementById('logout-form').submit(); return false;">
-                        <span class="bi bi-arrow-bar-left" aria-hidden="true"></span> Logout
-                    </NavLink>
-                </div>
-                <DomainNavMenu AuthorizedOnly="true" />
-            </Authorized>
-            <NotAuthorized>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="/Account/Register">
-                        <span class="bi bi-person" aria-hidden="true"></span> Register
-                    </NavLink>
-                </div>
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="/Account/Login">
-                        <span class="bi bi-person-badge" aria-hidden="true"></span> Login
-                    </NavLink>
-                </div>
-                <DomainNavMenu AuthorizedOnly="false" />
-            </NotAuthorized>
-        </AuthorizeView>
+        <DomainNavMenu AuthorizedOnly="false" />
+
+        <DomainNavMenu AuthorizedOnly="true" />
+
+
+
     </nav>
 </div>

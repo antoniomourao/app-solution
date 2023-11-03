@@ -14,6 +14,11 @@ Sends emails using the SmtpClient class.
     "EnableSsl": true
   }
 ```
+For setting password in a secure manera, you can use the following command:
+```dos
+dotnet user-secrets set "SmtpSettings:Password" = <user password>
+```
+Example: uzatjgrhiwtwryvtxov
 
 ### Read configuration and register configuration
 We need to read the appSettings and register the configuration to be used by the service as a singleton. This is done in the Program.cs file.

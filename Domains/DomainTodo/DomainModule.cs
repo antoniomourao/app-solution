@@ -14,7 +14,7 @@ public class DomainModule: IDomainModule
             navMenuItems.Add(new NavMenuItem() {
                 Href = "/todo/home",
                 Title = "ToDo",
-                Icon = "bi bi-home",
+                Icon = "bi bi-bookmark-check",
                 Roles = new List<string>()
             });
 

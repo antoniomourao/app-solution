@@ -14,7 +14,7 @@ public class DomainModule: IDomainModule
             navMenuItems.Add(new NavMenuItem() {
                 Href = "/counter",
                 Title = "Counter",
-                Icon = "oi oi-home",
+                Icon = "bi bi-plus-square-fill",
                 Roles = new List<string>() { "Admin", "User" }
             });
 

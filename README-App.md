@@ -11,6 +11,7 @@ This is the project structure:
     * **AppShared**, Shared project. This project will contain all the shared interfaces, components and classes that will be used by the server and client projects.
 
     * **Services** folder Library/Services, Class library project. This project will contain all the services that will be shared by the server and client projects.
+    
 * **Domains** Folder. This folder will contain all the domains that will be used by the server and client projects.
 
     * **DomainToDo**, Class library project. This project will contain all the classes that will have all the server logic for this domain.

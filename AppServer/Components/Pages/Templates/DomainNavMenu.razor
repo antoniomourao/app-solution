@@ -2,19 +2,17 @@
 
 @foreach (var (module, menuItems) in NavMenuItems)
 {
-    <div class="nav-item px-3">
-        @if (menuItems != null && menuItems.Count > 0)
+    @if (menuItems != null && menuItems.Count > 0)
+    {
+        @foreach (var item in menuItems)
         {
             <div class="nav-item px-3">
-                @foreach (var item in menuItems)
-                {
-                    <NavLink class="nav-link" href="@item.Href" data-enhance-nav="false">
-                        <span class="@item.Icon" aria-hidden="true"></span> @item.Title
-                    </NavLink>
-                }
+                <NavLink class="nav-link" href="@item.Href" data-enhance-nav-xx="false">
+                    <span class="@item.Icon" aria-hidden="true"></span> @item.Title
+                </NavLink>
             </div>
         }
-    </div>
+    }
 }
 
 @code {
@@ -37,13 +35,19 @@
                 List<INavMenuItem> ModuleNavMenuItems = new List<INavMenuItem>();
                 foreach (var item in module.NavMenuItems!)
                 {
-                    if (AuthorizedOnly && item.RequiresAuthorization)
+                    if (AuthorizedOnly)
                     {
-                        ModuleNavMenuItems.Add(item);
+                        if (item.RequiresAuthorization)
+                        {
+                            ModuleNavMenuItems.Add(item);
+                        }
                     }
                     else
                     {
-                        ModuleNavMenuItems.Add(item);
+                        if (!item.RequiresAuthorization)
+                        {
+                            ModuleNavMenuItems.Add(item);
+                        }
                     }
                 }
                 NavMenuItems.Add((module.MenuTitle, ModuleNavMenuItems));
