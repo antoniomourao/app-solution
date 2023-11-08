@@ -14,9 +14,9 @@ Sends emails using the SmtpClient class.
     "EnableSsl": true
   }
 ```
-For setting password in a secure manera, you can use the following command:
+For setting password in a secure manner, you can use the following command:
 ```dos
-dotnet user-secrets set "SmtpSettings:Password" = <user password>
+dotnet user-secrets set "SmtpSettings:Password" "<user password>"
 ```
 Example: uzatjgrhiwtwryvtxov
 

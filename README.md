@@ -65,6 +65,13 @@ To list stored user secrets
 dotnet user-secrets list
 ```
 
+## Weather API
+Access Weather API url at wwww.weatherapi.com where the key was obtained and saved on the user secrets.
+```dos
+dotnet user-secrets set "ApplicationKeys:WeatherApi" "45dta71782e10461at81a211228230t311"
+```
+
+
 ## Internal Libraries
 
 * [Email Sender Service](Library/Services/EmailSenderService/README.md)

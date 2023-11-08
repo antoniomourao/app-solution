@@ -72,6 +72,7 @@ public static class ProgramExtensions
 
         // Setup Domain Services
         services.AddScoped<IDomainModuleServices, DomainModuleServices>();
+
     }
 
     /// <summary>
