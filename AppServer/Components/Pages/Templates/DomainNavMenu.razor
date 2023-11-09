@@ -6,11 +6,7 @@
     {
         @foreach (var item in menuItems)
         {
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="@item.Href" data-enhance-nav-xx="false">
-                    <span class="@item.Icon" aria-hidden="true"></span> @item.Title
-                </NavLink>
-            </div>
+            <DomainNavMenuItem Item="@item" />
         }
     }
 }
