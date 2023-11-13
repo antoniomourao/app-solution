@@ -1,9 +1,11 @@
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.Extensions.Options;
+using System.Reflection;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using Microsoft.Extensions.Options;
+using AppShared.Extensions;
+using AppWeather;
 
 public static class ProgramExtensions
 {
@@ -56,23 +58,16 @@ public static class ProgramExtensions
     )
     {
         // Setup EmailSenderService for authentication
-        services
-            .AddOptions<EmailSenderServiceSmtpSettings>()
-            .Bind(configuration.GetSection("SmtpSettings"))
-            .ValidateDataAnnotations();
+        services.AppRegisterAppSettings<EmailSenderServiceSmtpSettings>(configuration, "SmtpSettings");
 
-        var instance = services
-            .BuildServiceProvider()
-            .GetRequiredService<IOptionsMonitor<EmailSenderServiceSmtpSettings>>()
-            .CurrentValue;
-        services.AddSingleton(_ => instance);
+        // Setup app settings for Weather
+        services.AppRegisterAppSettings<WeatherNetApiSettings>(configuration, "Weather");
 
         services.AddScoped<EmailService>();
         services.AddScoped<IEmailSender, EmailSenderUtil>();
 
         // Setup Domain Services
         services.AddScoped<IDomainModuleServices, DomainModuleServices>();
-
     }
 
     /// <summary>
@@ -101,4 +96,32 @@ public static class ProgramExtensions
 
         return assemblies.ToArray();
     }
+
+    private static T AppRegisterAppSettings<T>(
+        this IServiceCollection services,
+        IConfiguration configuration,
+        string sectionName
+    )
+        where T : class, new()
+    {
+        var section = configuration.GetSection(sectionName);
+        Console.WriteLine($"Registering app settings {section}...");
+
+        services.AddOptions<T>()
+             .Bind(configuration)
+             .ValidateDataAnnotations();
+
+        section = configuration.GetSection(sectionName);
+        Console.WriteLine($"Registering app settings {section}...");
+
+        var instance = services
+            .BuildServiceProvider()
+            .GetRequiredService<IOptionsMonitor<T>>()
+            .CurrentValue;
+
+        services.AddSingleton(_ => instance);
+        return instance;
+        //return services.RegisterAppSettings<T>(configuration);
+    }
+
 }

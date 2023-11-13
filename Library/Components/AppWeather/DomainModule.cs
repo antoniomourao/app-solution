@@ -12,9 +12,9 @@ public class DomainModule: IDomainModule
             List<INavMenuItem> navMenuItems = new List<INavMenuItem>();
 
             navMenuItems.Add(new NavMenuItem() {
-                Href = "/todo/home",
-                Title = "ToDo",
-                Icon = "bi bi-bookmark-check",
+                Href = "/weathernet/home",
+                Title = "Weather",
+                Icon = "bi bi-cloud-sun-fill",
                 Roles = new List<string>()
             });
 

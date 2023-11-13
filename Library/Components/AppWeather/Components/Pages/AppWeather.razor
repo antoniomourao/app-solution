@@ -1,62 +1,35 @@
-﻿@page "/weather"
+@page "/weathernet/index"
 
-@using WeatherAPI.NET
-@using WeatherAPI.NET.Entities
 @using System.Threading
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.Extensions.Logging
-@inject WeatherAPIClient _client
-@inject ILogger<Weather> _logger
+@using Microsoft.AspNetCore.Components.Forms;
+
+@inject IWeatherNetApiService _client
+@inject ILogger<AppWeather> _logger
 
 <h3>🌦 Weather</h3>
 
-@if (Message is {})
+@if (Message is { })
 {
     <div class="alert alert-danger" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="alert-heading">🐿 Oh Nuts!</h4>
-        <p>
-            <i class="oi oi-warning"></i> @Message
-        </p>
-    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="alert-heading">🐿 Oh Nuts!</h4>
+    <p>
+        <i class="oi oi-warning"></i> @Message
+    </p>
+</div>
 }
-
-<EditForm Model="@Input" OnValidSubmit="GetForecast" readonly="@_loading">
-    <DataAnnotationsValidator></DataAnnotationsValidator>
-    <label for="postalCode">Postal Code</label>
-    <div class="input-group mb-3">
-        <InputText @bind-Value="Input.Value" id="postalCode" class="form-control" aria-describedby="postalCodeHelp" autocomplete="off"/>
-        <div class="input-group-append">
-            @if (_loading == true)
-            {
-                <button class="btn btn-primary" type="submit" @onclick="() => _source?.Cancel()">
-                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                    Loading...
-                </button>
-            }
-            else
-            {
-                <button class="btn btn-primary" type="submit">
-                    Search
-                </button>
-            }
-        </div>
-    </div>
-    <small id="postalCodeHelp" class="form-text text-muted">
-        <ValidationMessage For="() => Input.Value"/> Search For Weather (ex. US Zipcode, UK Postcode, or Canada Postalcode).
-    </small>
-</EditForm>
-
 
 @if (_forecast is not null)
 {
     <hr/>
 
     <h3>
-        @_forecast.Location.Name
-        <small class="text-muted">@_forecast.Location.Region, @_forecast.Location.Country</small>
+        @_forecast.Location.name
+        <small class="text-muted">@_forecast.Location.region, @_forecast.Location.country</small>
     </h3>
 
     <div class="card-group">
@@ -65,18 +38,18 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">
-                        @day.Date.DayOfWeek
-                        <small class="text-muted text-right">@day.Date.ToShortDateString()</small>
+                        <span>day.date.DayOfWeek</span>
+                        <small class="text-muted text-right">@day.date</small>
                     </h4>
                     <div class="card-body">
                         <p class="card-text text-capitalize text-lg-center">
-                            <img src="@day.Day.Condition.IconURL" alt="@day.Day.Condition.Description">
+                            <img src="@day.Day.Condition.icon" alt="@day.Day.Condition.Description">
                             <strong>@day.Day.Condition.Description</strong>
                         </p>
 
                         <ul class="card-text">
-                            <li>@day.Day.MinimumTemperatureF F to @day.Day.MaximumTemperatureF F</li>
-                            <li>UV: @day.Day.UV</li>
+                            <li>@day.Day.MinimumTemperatureF to @day.Day.MaximumTemperatureF</li>
+                            <li>UV: @day.Day.uv</li>
                             @if (day.Day.WillItRain)
                             {
                                 <li>Rain (@day.Day.ChanceOfRain%): @day.Day.TotalPrecipitationIN inches</li>
@@ -85,7 +58,7 @@
                             {
                                 <li>Snow (@day.Day.ChanceOfSnow%): @day.Day.TotalPrecipitationIN inches</li>
                             }
-                            <li>Wind: @day.Day.MaximumWindMPH MPH</li>
+                            <li>Wind: @day.Day.MaximumWindMPH</li>
                         </ul>
                     </div>
                 </div>
@@ -104,18 +77,23 @@
 }
 
 @code {
-
     public class PostalCodeModel
     {
         [Required(AllowEmptyStrings = false), Display(Name = "Postal Code")]
         public string Value { get; set; }
     }
 
-    ForecastResponseEntity _forecast;
+    WeatherNetApiResult _forecast;
     PostalCodeModel Input { get; } = new();
     string Message { get; set; }
     bool? _loading;
     CancellationTokenSource _source;
+
+    private void OnInitialized()
+    {
+        Input.Value = "10001";
+        GetForecast(null);
+    }
 
     private async void GetForecast(EditContext editContext)
     {
@@ -125,11 +103,7 @@
         try
         {
             _loading = true;
-            var result = await _client.Forecast
-                .GetForecastAsync(new ForecastRequestEntity()
-                    .WithPostalCode(Input.Value)
-                    .WithDays(3), _source.Token
-                );
+            var result = await _client.GetWeatherAsync(null);
             
             if (_source?.IsCancellationRequested == false) {
                 _forecast = result;    
@@ -152,4 +126,5 @@
             StateHasChanged();
         }
     }
+    
 }

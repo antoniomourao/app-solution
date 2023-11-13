@@ -30,6 +30,7 @@
     <ProjectReference Include="..\Library\AppShared\AppShared.csproj" />
     <ProjectReference Include="..\Domains\DomainTodo\DomainTodo.csproj" />
     <ProjectReference Include="..\Library\Components\AppSharedComponents\AppSharedComponents.csproj" />
+    <ProjectReference Include="..\Library\Components\AppWeather\AppWeather.csproj" />
   </ItemGroup>
 
 </Project>

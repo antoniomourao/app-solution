@@ -9,6 +9,7 @@
         <NetCoreVersion>8.0.0-rc.2.*</NetCoreVersion>
 
         <NLog>5.*</NLog>
+        <NewtonsoftJson>13.*</NewtonsoftJson>
 
     </PropertyGroup>
 </Project>

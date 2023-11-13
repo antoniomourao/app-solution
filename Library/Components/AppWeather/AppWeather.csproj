@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
-    <TargetFramework>$(TargetFramework)</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>$(Nullable)</Nullable>
     <ImplicitUsings>$(ImplicitUsings)</ImplicitUsings>
   </PropertyGroup>
@@ -12,8 +12,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WeatherAPI.NET" Version="0.1.1-alpha" />
+    <PackageReference Include="Newtonsoft.Json" Version="$(NewtonsoftJson)" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="$(NetCoreVersion)" />
+    <PackageReference Include="Microsoft.AspNetCore.Components" Version="$(NetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="$(NetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="$(NetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="$(NetCoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AppShared\AppShared.csproj" />
   </ItemGroup>
 
 </Project>

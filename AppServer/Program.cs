@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using AppServer.Client.Pages;
 using AppServer.Components;
 using AppServer.Data;
 using AppServer.Identity;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
-using System.Reflection;
 
 public class Program
 {
@@ -29,12 +29,14 @@ public class Program
             // Set base directory for nLog
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
             Directory.SetCurrentDirectory(basePath);
-            builder.Configuration
+            builder
+                .Configuration
                 .SetBasePath(basePath)
                 .AddJsonFile("appsettings.json", false, true);
 
             // Add services to the container.
-            builder.Services
+            builder
+                .Services
                 .AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
@@ -49,7 +51,7 @@ public class Program
             /// Domain Services
             /// ++++++++++++++++++++++
             builder.Services.AddDomainServices();
-                    
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
