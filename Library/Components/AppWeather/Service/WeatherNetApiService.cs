@@ -1,10 +1,12 @@
+using System;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
 namespace AppWeather;
 
-public interface IWeatherNetApiService {
-    Task<WeatherNetApiResult> GetWeatherAsync(string? city);
+public interface IWeatherNetApiService
+{
+    Task<WeatherNetApiResult?> GetWeatherAsync(string? city);
 }
 
 public class WeatherNetApiService : IWeatherNetApiService
@@ -21,14 +23,14 @@ public class WeatherNetApiService : IWeatherNetApiService
         _httpClient = httpClient;
     }
 
-    public async Task<WeatherNetApiResult> GetWeatherAsync(string? city = null)
+    public async Task<WeatherNetApiResult?> GetWeatherAsync(string? city)
     {
-        var url = _settings.ToString();
+        var url = _settings.BuildFullUrl();
         var response = await _httpClient.GetAsync(url);
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<WeatherNetApiResult>(content);
+            return !String.IsNullOrEmpty(content)? JsonConvert.DeserializeObject<WeatherNetApiResult>(content) : null;
         }
 
         return null;
@@ -37,12 +39,13 @@ public class WeatherNetApiService : IWeatherNetApiService
 
 public class WeatherNetApiResult
 {
-    public WeatherNetApiResultLocation Location;
-    public WeatherNetApiResultCurrent Current;
-    public WeatherNetApiResultForecast Forecast;
+    public WeatherNetApiResultLocation Location { get; set; } = null!;
+    public WeatherNetApiResultCurrent Current { get; set; } = null!;
+    public WeatherNetApiResultForecast Forecast { get; set; } = null!;
 }
 
-public class WeatherNetApiResultLocation {
+public class WeatherNetApiResultLocation
+{
     public string? name { get; set; }
     public string? country { get; set; }
     public string? region { get; set; }
@@ -54,12 +57,13 @@ public class WeatherNetApiResultLocation {
     public string? utc_offset { get; set; }
 }
 
-public class WeatherNetApiResultCurrent () {
+public class WeatherNetApiResultCurrent
+{
     public string? last_updated { get; set; }
     public int? temp_c { get; set; }
     public int? temp_f { get; set; }
     public int? is_day { get; set; }
-    public WeatherNetApiResultCondition Condition { get; set; }
+    public WeatherNetApiResultCondition? Condition { get; set; }
     public int? wind_mph { get; set; }
     public int? wind_kph { get; set; }
     public int? wind_degree { get; set; }
@@ -79,25 +83,28 @@ public class WeatherNetApiResultCurrent () {
     public int? gust_kph { get; set; }
 }
 
-public class WeatherNetApiResultForecast {
-    public List<WeatherNetApiResultForecastDay> ForecastDay { get; set; }
+public class WeatherNetApiResultForecast
+{
+    public List<WeatherNetApiResultForecastDay>? ForecastDay { get; set; }
 }
 
-public class WeatherNetApiResultForecastDay {
+public class WeatherNetApiResultForecastDay
+{
     public string? date { get; set; }
     public int? date_epoch { get; set; }
-    public WeatherNetApiResultForecastDayDay Day { get; set; }
-    public WeatherNetApiResultForecastDayAstro Astro { get; set; }
-    public List<WeatherNetApiResultForecastDayHour> Hour { get; set; }
+    public WeatherNetApiResultForecastDayDay? Day { get; set; }
+    public WeatherNetApiResultForecastDayAstro? Astro { get; set; }
+    public List<WeatherNetApiResultForecastDayHour>? Hour { get; set; }
 }
 
-public class WeatherNetApiResultForecastDayHour {
+public class WeatherNetApiResultForecastDayHour
+{
     public string? time { get; set; }
     public int? time_epoch { get; set; }
     public int? temp_c { get; set; }
     public int? temp_f { get; set; }
     public int? is_day { get; set; }
-    public WeatherNetApiResultCondition Condition { get; set; }
+    public WeatherNetApiResultCondition? Condition { get; set; }
     public int? wind_mph { get; set; }
     public int? wind_kph { get; set; }
     public int? wind_degree { get; set; }
@@ -128,7 +135,8 @@ public class WeatherNetApiResultForecastDayHour {
 
 }
 
-public class WeatherNetApiResultForecastDayAstro {
+public class WeatherNetApiResultForecastDayAstro
+{
     public string? sunrise { get; set; }
     public string? sunset { get; set; }
     public string? moonrise { get; set; }
@@ -137,7 +145,8 @@ public class WeatherNetApiResultForecastDayAstro {
     public string? moon_illumination { get; set; }
 }
 
-public class WeatherNetApiResultForecastDayDay {
+public class WeatherNetApiResultForecastDayDay
+{
     public int? maxtemp_c { get; set; }
     public int? maxtemp_f { get; set; }
     public int? mintemp_c { get; set; }
@@ -155,11 +164,11 @@ public class WeatherNetApiResultForecastDayDay {
     public string? daily_chance_of_rain { get; set; }
     public int? daily_will_it_snow { get; set; }
     public string? daily_chance_of_snow { get; set; }
-    public WeatherNetApiResultCondition Condition { get; set; }
+    public WeatherNetApiResultCondition? Condition { get; set; }
     public int? uv { get; set; }
-    public string? MinimumTemperatureF { get => $"{mintemp_f}°F"; } 
+    public string? MinimumTemperatureF { get => $"{mintemp_f}°F"; }
     public string? MaximumTemperatureF { get => $"{maxtemp_f}°F"; }
-    public bool WillItRain { get => daily_will_it_rain == 1 ? true : false; } 
+    public bool WillItRain { get => daily_will_it_rain == 1 ? true : false; }
     public bool WillItSnow { get => daily_will_it_snow == 1 ? true : false; }
     public string? ChanceOfRain { get => daily_chance_of_rain; }
     public string? ChanceOfSnow { get => daily_chance_of_snow; }
@@ -168,7 +177,8 @@ public class WeatherNetApiResultForecastDayDay {
 
 }
 
-public class WeatherNetApiResultCondition {
+public class WeatherNetApiResultCondition
+{
     public string? Description { get => text; }
     public string? text { get; set; }
     public string? icon { get; set; }

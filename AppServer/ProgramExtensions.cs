@@ -58,10 +58,10 @@ public static class ProgramExtensions
     )
     {
         // Setup EmailSenderService for authentication
-        services.AppRegisterAppSettings<EmailSenderServiceSmtpSettings>(configuration, "SmtpSettings");
+        services.AppRegisterAppSettings<EmailSenderServiceSmtpSettings>(configuration.GetSection("SmtpSettings"));
 
         // Setup app settings for Weather
-        services.AppRegisterAppSettings<WeatherNetApiSettings>(configuration, "Weather");
+        services.AppRegisterAppSettings<WeatherNetApiSettings>(configuration.GetSection("Weather"));
 
         services.AddScoped<EmailService>();
         services.AddScoped<IEmailSender, EmailSenderUtil>();
@@ -99,20 +99,13 @@ public static class ProgramExtensions
 
     private static T AppRegisterAppSettings<T>(
         this IServiceCollection services,
-        IConfiguration configuration,
-        string sectionName
+        IConfiguration configuration
     )
         where T : class, new()
     {
-        var section = configuration.GetSection(sectionName);
-        Console.WriteLine($"Registering app settings {section}...");
-
         services.AddOptions<T>()
              .Bind(configuration)
              .ValidateDataAnnotations();
-
-        section = configuration.GetSection(sectionName);
-        Console.WriteLine($"Registering app settings {section}...");
 
         var instance = services
             .BuildServiceProvider()
@@ -121,7 +114,6 @@ public static class ProgramExtensions
 
         services.AddSingleton(_ => instance);
         return instance;
-        //return services.RegisterAppSettings<T>(configuration);
     }
 
 }

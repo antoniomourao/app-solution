@@ -8,7 +8,7 @@
 @inject IWeatherNetApiService _client
 @inject ILogger<AppWeather> _logger
 
-<h3>🌦 Weather</h3>
+<h3>🌦 Weather 1</h3>
 
 @if (Message is { })
 {
@@ -80,16 +80,16 @@
     public class PostalCodeModel
     {
         [Required(AllowEmptyStrings = false), Display(Name = "Postal Code")]
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
     }
 
-    WeatherNetApiResult _forecast;
+    WeatherNetApiResult _forecast = null;
     PostalCodeModel Input { get; } = new();
-    string Message { get; set; }
+    string Message { get; set; } = null;
     bool? _loading;
-    CancellationTokenSource _source;
+    CancellationTokenSource _source = null;
 
-    private void OnInitialized()
+    protected override void OnInitialized()
     {
         Input.Value = "10001";
         GetForecast(null);
@@ -98,7 +98,7 @@
     private async void GetForecast(EditContext editContext)
     {
         _source = new CancellationTokenSource(TimeSpan.FromSeconds(3));
-        Message = null;
+        Message = string.Empty;
 
         try
         {

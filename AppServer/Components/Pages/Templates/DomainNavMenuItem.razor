@@ -32,9 +32,9 @@
             {
                 return new NavMenuItem
                     {
-                        Href = Href,
-                        Icon = Icon,
-                        Title = Title
+                        Href = Href ?? string.Empty,
+                        Icon = Icon ?? string.Empty,
+                        Title = Title ?? string.Empty
                     };
             }
         }
