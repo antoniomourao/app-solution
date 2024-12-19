@@ -1,14 +1,14 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using AppServer.Client.Pages;
 using AppServer.Components;
 using AppServer.Data;
 using AppServer.Identity;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
-using System.Reflection;
 
 public class Program
 {
@@ -24,16 +24,19 @@ public class Program
         try
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddEndpointsApiExplorer();
 
             // Set base directory for nLog
             var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
             Directory.SetCurrentDirectory(basePath);
-            builder.Configuration
+            builder
+                .Configuration
                 .SetBasePath(basePath)
                 .AddJsonFile("appsettings.json", false, true);
 
             // Add services to the container.
-            builder.Services
+            builder
+                .Services
                 .AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents();
@@ -41,8 +44,13 @@ public class Program
             // Add additional endpoints required by the Identity /Account Razor components.
             builder.Services.AddIdentityServices(builder.Configuration);
 
-            // Add Email Sender Service
-            builder.Services.AddEmailServices(builder.Configuration);
+            // Add Required App Server Service
+            builder.Services.AddAppServerServices(builder.Configuration);
+
+            /// ++++++++++++++++++++++
+            /// Domain Services
+            /// ++++++++++++++++++++++
+            builder.Services.AddDomainServices();
 
             var app = builder.Build();
 
@@ -66,10 +74,14 @@ public class Program
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode()
                 .AddInteractiveWebAssemblyRenderMode()
-                .AddAdditionalAssemblies(typeof(Counter).Assembly);
+                .AddAdditionalAssemblies(ProgramExtensions.GetAssembliesToLoad());
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();
+
+            // app.MapControllers();
+            // app.MapDefaultControllerRoute();
+
 
             app.Run();
         }

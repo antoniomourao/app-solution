@@ -1,0 +1,130 @@
+@page "/weathernet/index"
+
+@using System.Threading
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.Extensions.Logging
+@using Microsoft.AspNetCore.Components.Forms;
+
+@inject IWeatherNetApiService _client
+@inject ILogger<AppWeather> _logger
+
+<h3>🌦 Weather 1</h3>
+
+@if (Message is { })
+{
+    <div class="alert alert-danger" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="alert-heading">🐿 Oh Nuts!</h4>
+    <p>
+        <i class="oi oi-warning"></i> @Message
+    </p>
+</div>
+}
+
+@if (_forecast is not null)
+{
+    <hr/>
+
+    <h3>
+        @_forecast.Location.name
+        <small class="text-muted">@_forecast.Location.region, @_forecast.Location.country</small>
+    </h3>
+
+    <div class="card-group">
+        @foreach (var day in _forecast.Forecast.ForecastDay)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <span>day.date.DayOfWeek</span>
+                        <small class="text-muted text-right">@day.date</small>
+                    </h4>
+                    <div class="card-body">
+                        <p class="card-text text-capitalize text-lg-center">
+                            <img src="@day.Day.Condition.icon" alt="@day.Day.Condition.Description">
+                            <strong>@day.Day.Condition.Description</strong>
+                        </p>
+
+                        <ul class="card-text">
+                            <li>@day.Day.MinimumTemperatureF to @day.Day.MaximumTemperatureF</li>
+                            <li>UV: @day.Day.uv</li>
+                            @if (day.Day.WillItRain)
+                            {
+                                <li>Rain (@day.Day.ChanceOfRain%): @day.Day.TotalPrecipitationIN inches</li>
+                            }
+                            @if (day.Day.WillItSnow)
+                            {
+                                <li>Snow (@day.Day.ChanceOfSnow%): @day.Day.TotalPrecipitationIN inches</li>
+                            }
+                            <li>Wind: @day.Day.MaximumWindMPH</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col">
+            <p style="padding-top: 1em">
+                <a href="https://www.weatherapi.com/" title="Free Weather API">
+                    <img src='//cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0">
+                </a>
+            </p>
+        </div>
+    </div>
+}
+
+@code {
+    public class PostalCodeModel
+    {
+        [Required(AllowEmptyStrings = false), Display(Name = "Postal Code")]
+        public string Value { get; set; } = string.Empty;
+    }
+
+    WeatherNetApiResult _forecast = null;
+    PostalCodeModel Input { get; } = new();
+    string Message { get; set; } = null;
+    bool? _loading;
+    CancellationTokenSource _source = null;
+
+    protected override void OnInitialized()
+    {
+        Input.Value = "10001";
+        GetForecast(null);
+    }
+
+    private async void GetForecast(EditContext editContext)
+    {
+        _source = new CancellationTokenSource(TimeSpan.FromSeconds(3));
+        Message = string.Empty;
+
+        try
+        {
+            _loading = true;
+            var result = await _client.GetWeatherAsync(null);
+            
+            if (_source?.IsCancellationRequested == false) {
+                _forecast = result;    
+            }
+        }
+        catch (Exception e)
+        {
+            Message = _source?.IsCancellationRequested == true
+                ? "Request to API timed out" 
+                : e.Message;
+
+            _logger.LogError(e, "couldn't retrieve forecast");
+        }
+        finally
+        {
+            _loading = null;
+            _source = null;
+            // poke blazor to reset 
+            // in case an error has occurred
+            StateHasChanged();
+        }
+    }
+    
+}

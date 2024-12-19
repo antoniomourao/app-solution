@@ -1,0 +1,22 @@
+﻿<GenericDialog Title=@Title ConfirmText=@ConfirmText Show=@Show HideCancel=true OnConfirm=@OnConfirm>
+ @ChildContent
+</GenericDialog>
+
+@code {
+
+ [Parameter]
+ public string Title { get; set; } = "Confirm";	
+
+ [Parameter]
+ public string ConfirmText { get; set; } = "Ok";
+
+ [Parameter]
+ public RenderFragment ChildContent { get; set; } = null!;
+
+ [Parameter]
+ public bool Show { get; set; }
+
+
+ [Parameter] public EventCallback OnConfirm { get; set; }
+
+}

@@ -1,0 +1,55 @@
+@using AppShared.NavMenu;
+
+@foreach (var (module, menuItems) in NavMenuItems)
+{
+    @if (menuItems != null && menuItems.Count > 0)
+    {
+        @foreach (var item in menuItems)
+        {
+            <DomainNavMenuItem Item="@item" />
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public bool AuthorizedOnly { get; set; }
+
+    [Inject]
+    private IDomainModuleServices? _domainModuleServices { get; set; }
+
+    private List<(string, List<INavMenuItem>)> NavMenuItems { get; set; } = new List<(string,
+    List<INavMenuItem>)>();
+
+    protected override void OnInitialized()
+    {
+        if (_domainModuleServices != null && _domainModuleServices.DomainModules?.Count() > 0)
+        {
+            foreach (var module in _domainModuleServices.DomainModules)
+            {
+                if (module.NavMenuItems == null || module.NavMenuItems.Count == 0) continue;
+                List<INavMenuItem> ModuleNavMenuItems = new List<INavMenuItem>();
+                foreach (var item in module.NavMenuItems!)
+                {
+                    if (AuthorizedOnly)
+                    {
+                        if (item.RequiresAuthorization)
+                        {
+                            ModuleNavMenuItems.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        if (!item.RequiresAuthorization)
+                        {
+                            ModuleNavMenuItems.Add(item);
+                        }
+                    }
+                }
+                NavMenuItems.Add((module.MenuTitle, ModuleNavMenuItems));
+            }
+        }
+    }
+
+
+}

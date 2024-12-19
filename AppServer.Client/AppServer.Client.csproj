@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="$(NetCoreVersion)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Library\AppShared\AppShared.csproj" />
+  </ItemGroup>
+
 </Project>

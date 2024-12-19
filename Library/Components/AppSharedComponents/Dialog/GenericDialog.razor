@@ -1,0 +1,67 @@
+﻿@if (Show)
+{
+
+    <div class="dialog-container">
+        <div class="dialog">
+            <div class="dialog-title">
+                <h2>@Title</h2>
+            </div>
+
+            <div class="dialog-body">
+                @ChildContent
+            </div>
+
+            <div class="dialog-buttons">
+                @if (!HideCancel)
+                {
+                     <button class="btn btn-secondary mr-auto" @onclick="localOnCancel">@CancelText</button>
+                }
+                @if (!HideConfirm)
+                {
+                    <button class="btn btn-success ml-auto" @onclick="localOnConfirm">@ConfirmText</button>
+                }
+            </div>
+
+        </div>
+    </div>
+
+}
+
+@code {
+
+    [Parameter]
+    public string Title { get; set; } = "Confirm your action";
+
+    [Parameter]
+    public string CancelText { get; set; } = "Cancel";
+
+    [Parameter]
+    public string ConfirmText { get; set; } = "Ok";
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null!;
+
+    [Parameter]
+    public bool Show { get; set; }
+
+    [Parameter]
+    public bool HideCancel { get; set; } = false;
+    [Parameter]
+    public bool HideConfirm { get; set; } = false;
+
+    [Parameter] public EventCallback OnCancel { get; set; }
+    [Parameter] public EventCallback OnConfirm { get; set; }
+
+    private void localOnCancel()
+    {
+        Show = false;
+        OnCancel.InvokeAsync();
+    }
+
+    private void localOnConfirm()
+    {
+        Show = false;
+        OnConfirm.InvokeAsync();
+    }
+
+}

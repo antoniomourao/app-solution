@@ -15,12 +15,13 @@
                         </NavLink>
                     </div>
                     <div class="nav-item px-3">
-                        <LogoutForm id="logout-form"></LogoutForm>
+                        <LogoutForm id="logout-form" name="LogoutFormName"></LogoutForm>
                         <NavLink class="nav-link" href="#"
                             onclick="document.getElementById('logout-form').submit(); return false;">
                             <span class="bi bi-arrow-bar-left" aria-hidden="true"></span> Logout
                         </NavLink>
                     </div>
+
                 </Authorized>
                 <NotAuthorized>
                     <div class="nav-item px-3">
@@ -49,3 +50,8 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+
+}
+```
